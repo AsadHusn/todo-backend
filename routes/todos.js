@@ -5,6 +5,7 @@ const {
   update_todo,
   delete_todo,
 } = require("../controllers/todos");
+const v = require("../validations/todos");
 
 /**
  * @swagger
@@ -46,7 +47,7 @@ const {
  *     tags: [Todos]
  *     responses:
  *       200:
- *         description: Successful response
+ *         description: Todos List
  *         content:
  *           application/json:
  *             schema:
@@ -85,7 +86,7 @@ router.get("/todos", get_todos);
  *               format: mongoObjectId
  *             example: 657cbec3324dd670d030b5d6
  */
-router.post("/todo", add_todo);
+router.post("/todo", v.addTodo, add_todo);
 
 /**
  * @swagger
@@ -119,7 +120,7 @@ router.post("/todo", add_todo);
  *               id: 5fecceea7d7bc321c87ce654
  *
  */
-router.put("/todo", update_todo);
+router.put("/todo", v.updateTodo, update_todo);
 
 /**
  * @swagger
@@ -160,6 +161,6 @@ router.put("/todo", update_todo);
  *               id: 5fecceea7d7bc321c87ce654
  *
  */
-router.delete("/todo", delete_todo);
+router.delete("/todo", v.deleteTodo, delete_todo);
 
 module.exports = router;
