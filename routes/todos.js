@@ -134,6 +134,7 @@ router.put("/", v.updateTodo, update_todo);
  *         description: "MongoDB ObjectId"
  *         schema:
  *           type: string
+ *           format: mongoObjectId
  *         example: 5fecceea7d7bc321c87ce654
  *
  *     requestBody:
