@@ -41,7 +41,7 @@ const v = require("../validations/todos");
 
 /**
  * @swagger
- * /todos:
+ * /todo:
  *   get:
  *     summary: Get all Todos
  *     tags: [Todos]
@@ -55,7 +55,7 @@ const v = require("../validations/todos");
  *               items:
  *                 $ref: '#/components/schemas/Todo'
  */
-router.get("/todos", get_todos);
+router.get("/", get_todos);
 
 /**
  * @swagger
@@ -86,7 +86,7 @@ router.get("/todos", get_todos);
  *               format: mongoObjectId
  *             example: 657cbec3324dd670d030b5d6
  */
-router.post("/todo", v.addTodo, add_todo);
+router.post("/", v.addTodo, add_todo);
 
 /**
  * @swagger
@@ -120,7 +120,7 @@ router.post("/todo", v.addTodo, add_todo);
  *               id: 5fecceea7d7bc321c87ce654
  *
  */
-router.put("/todo", v.updateTodo, update_todo);
+router.put("/", v.updateTodo, update_todo);
 
 /**
  * @swagger
@@ -161,6 +161,6 @@ router.put("/todo", v.updateTodo, update_todo);
  *               id: 5fecceea7d7bc321c87ce654
  *
  */
-router.delete("/todo", v.deleteTodo, delete_todo);
+router.delete("/:id?", v.deleteTodo, delete_todo);
 
 module.exports = router;

@@ -27,7 +27,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use(cors());
 app.use(express.json());
 
-app.use("/", todoRouter);
+app.use("/todo", todoRouter);
 
 connectDB().then(() => {
   app.listen(5000, () => {

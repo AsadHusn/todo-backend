@@ -1,4 +1,4 @@
-const { body, param, validationResult } = require("express-validator");
+const { body, param, validationResult, oneOf } = require("express-validator");
 
 const checkValidation = (req, res, next) => {
   const result = validationResult(req);
@@ -23,13 +23,15 @@ const addTodo = [
 ];
 
 const deleteTodo = [
-  param("id").isMongoId().withMessage("Id is not a valid mongoId"),
+  oneOf([param("id").isMongoId(), body("id").isMongoId()], {
+    message: "id is not a valid mongoId in params or body",
+  }),
   checkValidation,
 ];
 
 const updateTodo = [
-  param("id").optional().isMongoId().withMessage("Id is not a valid mongoId"),
-  body("id").notEmpty().isMongoId().withMessage("Id is not a valid mongoId"),
+  param("id").optional().isMongoId().withMessage("id is not a valid mongoId"),
+  body("id").notEmpty().isMongoId().withMessage("id is not a valid mongoId"),
   body("title")
     .optional()
     .notEmpty()
