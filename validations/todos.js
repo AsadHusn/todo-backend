@@ -30,8 +30,9 @@ const deleteTodo = [
 ];
 
 const updateTodo = [
-  param("id").optional().isMongoId().withMessage("id is not a valid mongoId"),
-  body("id").notEmpty().isMongoId().withMessage("id is not a valid mongoId"),
+  oneOf([param("id").isMongoId(), body("id").isMongoId()], {
+    message: "id is not a valid mongoId in params or body",
+  }),
   body("title")
     .optional()
     .notEmpty()

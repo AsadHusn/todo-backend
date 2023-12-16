@@ -124,12 +124,19 @@ router.put("/", v.updateTodo, update_todo);
 
 /**
  * @swagger
- * /todo:
+ * /todo/{id}:
  *   delete:
  *     summary: Delete Todo
  *     tags: [Todos]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         description: "MongoDB ObjectId"
+ *         schema:
+ *           type: string
+ *         example: 5fecceea7d7bc321c87ce654
+ *
  *     requestBody:
- *       required: true
  *       content:
  *         application/json:
  *           schema:
@@ -147,12 +154,7 @@ router.put("/", v.updateTodo, update_todo);
  *         content:
  *           application/json:
  *             schema:
- *               allOf:
- *                 - type: object
- *                   properties:
- *                     createdAt:
- *                       type: string
- *                 - $ref: "#/components/schemas/Todo"
+ *               $ref: "#/components/schemas/Todo"
  *             example:
  *               title: Example Todo
  *               completed: false

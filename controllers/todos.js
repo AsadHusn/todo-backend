@@ -20,7 +20,8 @@ exports.add_todo = async (req, res) => {
 
 exports.update_todo = async (req, res) => {
   try {
-    const todo = await Todo.findByIdAndUpdate(req.body.id, req.body, {
+    const id = req.params.id || req.body.id;
+    const todo = await Todo.findByIdAndUpdate(id, req.body, {
       new: true,
     });
     if (!todo) return res.sendStatus(404);
