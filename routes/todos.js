@@ -36,11 +36,6 @@ const {
  *         completed: false
  *         createdAt: "2023-12-15T20:46:43.691Z"
  *         updatedAt: 2023-12-15T21:12:21.300Z
- *
- *     TodoArray:
- *       type: array
- *       items:
- *         $ref: '#/components/schemas/Todo'
  */
 
 /**
@@ -55,7 +50,9 @@ const {
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/TodoArray'
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Todo'
  */
 router.get("/todos", get_todos);
 
