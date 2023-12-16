@@ -1,4 +1,4 @@
-const Todos = require("../modal");
+const Todos = require("../models/todo");
 
 exports.get_todos = async (req, res) => {
   try {
