@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const {
-  get_todos,
-  add_todo,
-  update_todo,
-  delete_todo,
+  getTodos,
+  addTodo,
+  updateTodo,
+  deleteTodo,
 } = require("../controllers/todos");
 const v = require("../validations/todos");
 
@@ -55,7 +55,7 @@ const v = require("../validations/todos");
  *               items:
  *                 $ref: '#/components/schemas/Todo'
  */
-router.get("/", get_todos);
+router.get("/", getTodos);
 
 /**
  * @swagger
@@ -86,7 +86,7 @@ router.get("/", get_todos);
  *               format: mongoObjectId
  *             example: 657cbec3324dd670d030b5d6
  */
-router.post("/", v.addTodo, add_todo);
+router.post("/", v.addTodo, addTodo);
 
 /**
  * @swagger
@@ -120,7 +120,7 @@ router.post("/", v.addTodo, add_todo);
  *               id: 5fecceea7d7bc321c87ce654
  *
  */
-router.put("/", v.updateTodo, update_todo);
+router.put("/:id?", v.updateTodo, updateTodo);
 
 /**
  * @swagger
@@ -164,6 +164,6 @@ router.put("/", v.updateTodo, update_todo);
  *               id: 5fecceea7d7bc321c87ce654
  *
  */
-router.delete("/:id?", v.deleteTodo, delete_todo);
+router.delete("/:id?", v.deleteTodo, deleteTodo);
 
 module.exports = router;
