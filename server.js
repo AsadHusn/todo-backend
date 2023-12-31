@@ -29,6 +29,8 @@ app.use(express.json());
 
 app.use("/todo", todoRouter);
 
+app.get("/", (req, res) => res.send("Hello World"));
+
 connectDB().then(() => {
   app.listen(5000, () => {
     console.log("Server is running at 5000");
