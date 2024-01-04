@@ -1,9 +1,10 @@
 const express = require("express");
-const connectDB = require("./db");
+const connectDB = require("#db");
 const cors = require("cors");
-const todoRouter = require("./routes/todos");
+const todoRouter = require("#routes/todos.js");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
+const { PORT } = require("#config");
 
 const options = {
   definition: {
@@ -31,8 +32,9 @@ app.use("/todo", todoRouter);
 
 app.get("/", (req, res) => res.send("Hello World"));
 
-connectDB().then(() => {
-  app.listen(5000, () => {
-    console.log("Server is running at 5000");
-  });
+connectDB().then((db) => {
+  const { host, port, name } = db.connection;
+  // console.log("DB is connected -", host, port, name);
+  console.log(name, "DB is connected -", db.connection._connectionString);
+  app.listen(PORT, () => console.log("Server is running on port", PORT));
 });

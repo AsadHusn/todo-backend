@@ -6,6 +6,15 @@
   "scripts": {
     "dev": "nodemon server"
   },
+  "imports": {
+    "#db": "./db/index.js",
+    "#config": "./config.js",
+    "#routes/*": "./routes/*",
+    "#validations/*": "./validations/*",
+    "#controllers/*": "./controllers/*",
+    "#models/*": "./db/models/*",
+    "#dbOperations/*": "./db/operations/*"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

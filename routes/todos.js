@@ -4,8 +4,8 @@ const {
   addTodo,
   updateTodo,
   deleteTodo,
-} = require("../controllers/todos");
-const v = require("../validations/todos");
+} = require("#controllers/todos.js");
+const v = require("#validations/todos.js");
 
 /**
  * @swagger

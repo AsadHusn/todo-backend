@@ -1,4 +1,4 @@
-const Todo = require("../models/todo");
+const Todo = require("#models/todos.js");
 
 exports.get_todos = async () => await Todo.find();
 

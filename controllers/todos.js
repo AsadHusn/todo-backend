@@ -1,4 +1,4 @@
-const Todo = require("../db/todoOperations");
+const Todo = require("#dbOperations/todos.js");
 
 exports.getTodos = async (req, res) => {
   try {

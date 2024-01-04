@@ -23,6 +23,4 @@ const todosSchema = new mongoose.Schema(todos, {
   timestamps: true,
 });
 
-const Todos = mongoose.model("todo", todosSchema);
-
-module.exports = Todos;
+module.exports = mongoose.model("todo", todosSchema);
