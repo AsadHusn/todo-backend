@@ -4,6 +4,7 @@
   "description": "",
   "main": "server",
   "scripts": {
+    "start": "node .",
     "dev": "nodemon server"
   },
   "imports": {
