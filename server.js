@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 const connectDB = require("#db");
 const cors = require("cors");
 const todoRouter = require("#routes/todos.js");
@@ -28,10 +29,11 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/todo", todoRouter);
 
-app.get("/", (req, res) => res.send("Hello World"));
+// app.get("/", (req, res) => res.sendFile(__dirname + "/public/index.html"));
 
 connectDB().then((db) => {
   const { host, port, name } = db.connection;
