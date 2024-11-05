@@ -7,6 +7,7 @@ const {
 const checkValidation = (req, res, next) => {
   const result = validationResult(req, { strictParams: ["body"] });
   if (!result.isEmpty()) return res.status(404).json(result.array());
+// this is to trim any extra fields in the body or params and allow only the matched data
   req.body = matchedData(req, {
     locations: ["body"],
   });
